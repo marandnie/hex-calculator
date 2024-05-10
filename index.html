@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 130px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            width: 120px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hex/Binary/Decimal Converter</h1>
+        <label for="number">Number:</label>
+        <input type="text" id="number" placeholder="Enter number">
+        <select id="conversionType">
+            <option value="hexToBinary">Hex to Binary</option>
+            <option value="binaryToHex">Binary to Hex</option>
+            <option value="decimalToHex">Decimal to Hex</option>
+            <option value="hexToDecimal">Hex to Decimal</option>
+            <option value="binaryToDecimal">Binary to Decimal</option>
+            <option value="decimalToBinary">Decimal to Binary</option>
+        </select>
+        <button onclick="convert()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Function to convert hexadecimal to binary
+        function hexToBinary(hex) {
+            return parseInt(hex, 16).toString(2);
+        }
+
+        // Function to convert binary to hexadecimal
+        function binaryToHex(binary) {
+            return parseInt(binary, 2).toString(16).toUpperCase();
+        }
+
+        // Function to convert decimal to hexadecimal
+        function decimalToHex(decimal) {
+            return decimal.toString(16).toUpperCase();
+        }
+
+        // Function to convert hexadecimal to decimal
+        function hexToDecimal(hex) {
+            return parseInt(hex, 16);
+        }
+
+        // Function to convert binary to decimal
+        function binaryToDecimal(binary) {
+            return parseInt(binary, 2);
+        }
+
+        // Function to convert decimal to binary
+        function decimalToBinary(decimal) {
+            return decimal.toString(2);
+        }
+
+        // Function to handle conversion
+        function convert() {
+            var number = document.getElementById('number').value;
+            var conversionType = document.getElementById('conversionType').value;
+            var result;
+
+            switch (conversionType) {
+                case 'hexToBinary':
+                    result = hexToBinary(number);
+                    break;
+                case 'binaryToHex':
+                    result = binaryToHex(number);
+                    break;
+                case 'decimalToHex':
+                    result = decimalToHex(parseInt(number));
+                    break;
+                case 'hexToDecimal':
+                    result = hexToDecimal(number);
+                    break;
+                case 'binaryToDecimal':
+                    result = binaryToDecimal(number);
+                    break;
+                case 'decimalToBinary':
+                    result = decimalToBinary(parseInt(number));
+                    break;
+            }
+
+            document.getElementById('result').innerHTML = "<strong>Result:</strong> " + result;
+        }
+    </script>
+</body>
+</html>
