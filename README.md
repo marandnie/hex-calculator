@@ -1,4 +1,4 @@
 Hex / Binary / Decimal converter
 
 
-https://mandieto.com.ar/hex_calculator
+https://mandieto.com.ar/hex-calculator
